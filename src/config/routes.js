@@ -1,4 +1,4 @@
-import todoApi from '../api/todo';
+import mangaApi from '../api/manga';
 import packageJson from '../../package.json';
 
 const API_V1 = '/api/v1';
@@ -8,5 +8,5 @@ export default (app) => {
         res.json({ version: packageJson.version });
     });
 
-    app.use(API_V1, todoApi);
+    app.use(API_V1, mangaApi);
 };
