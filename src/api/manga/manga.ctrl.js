@@ -25,7 +25,7 @@ function update(req, res) {
 
 function create(req, res) {
     const name = req.body.name;
-    
+
     MangaDa.create(name)
         .then((manga) => { res.status(200).json(manga); })
         .catch(() => { res.sendStatus(422); });
