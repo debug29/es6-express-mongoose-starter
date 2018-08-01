@@ -29,8 +29,9 @@ const MangaSchema = new mongoose.Schema({
         required: false
     }],
     rating: {
-        type: Float,
-        default: false
+        type: Number,
+        default : 0.0,
+        required: false
     },
     created: {
         type: Date,
