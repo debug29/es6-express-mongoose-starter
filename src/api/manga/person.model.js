@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import findOrCreate from 'mongoose-find-or-create';
 
 const PersonSchema = new mongoose.Schema({
     name: {
@@ -10,5 +11,7 @@ const PersonSchema = new mongoose.Schema({
         default: Date.now
     }
 });
+
+PersonSchema.plugin(findOrCreate);
 
 export default mongoose.model('Person', PersonSchema);
