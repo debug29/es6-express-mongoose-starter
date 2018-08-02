@@ -45,9 +45,9 @@ function update(id, name, completed) {
 function create(name, author, artist, genre, type, resume) {
     const deferred = Q.defer();
 
-    Person.findOrCreate({ name: author }, (errAu, dbAuthor) => {
-        Person.findOrCreate({ name: artist }, (errAr, dbArtist) => {
-            Genre.findOrCreate({ name: genre }, (errGe, dbGenre) => {
+    Person.findOrCreate({ name: author }, (_errAu, dbAuthor) => {
+        Person.findOrCreate({ name: artist }, (_errAr, dbArtist) => {
+            Genre.findOrCreate({ name: genre }, (_errGe, dbGenre) => {
                 console.log(name + ' / ' + dbAuthor + ' / ' + dbArtist + ' / ' + dbGenre + ' / ' + type + ' / ' + resume);
                 deferred.resolve('OK');
             });
