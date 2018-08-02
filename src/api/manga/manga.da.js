@@ -16,7 +16,7 @@ function getAll() {
     Manga.find({}, (err, mangas) => {
         if (err) deferred.reject(err);
         deferred.resolve(mangas);
-    }).populate('genre');
+    }).populate('genre').populate('author').populate('artist');
 
     return deferred.promise;
 }
