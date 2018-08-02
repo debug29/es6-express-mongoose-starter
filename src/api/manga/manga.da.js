@@ -1,5 +1,6 @@
 import Q from 'q';
 import Manga from './manga.model';
+import Person from './person.model';
 
 export default {
     getAll,
@@ -40,13 +41,11 @@ function update(id, name, completed) {
     return deferred.promise;
 }
 
-function create(name) {
+function create(name, author) {
     const deferred = Q.defer();
-    const manga = new Manga({ name });
-    manga.save((err, savedManga) => {
-        if (err) deferred.reject(err);
 
-        deferred.resolve(savedManga);
+    const author = Person.findOrCreate({ name: author }, (err, result) => {
+        deferred.resolve(result);
     });
 
     return deferred.promise;
