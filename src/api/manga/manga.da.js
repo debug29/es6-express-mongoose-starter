@@ -1,6 +1,7 @@
 import Q from 'q';
 import Manga from './manga.model';
 import Person from './person.model';
+import Genre from './genre.model';
 
 export default {
     getAll,
@@ -41,11 +42,16 @@ function update(id, name, completed) {
     return deferred.promise;
 }
 
-function create(name, author) {
+function create(name, author, artist, genre, type, resume) {
     const deferred = Q.defer();
 
-    Person.findOrCreate({ name: author }, (err, result) => {
-        deferred.resolve(result);
+    Person.findOrCreate({ name: author }, (err, dbAuthor) => {
+        Person.findOrCreate({ name: artist }, (err, dbArtist) => {
+            Genre.findOrCreate({ name: genre }, (err, dbGenre) => {
+                console.log(name + " / " + dbAuthor + " / " + dbArtist + " / " + dbGenre + " / " + type + " / " + resume);
+                deferred.resolve("OK");
+            });
+        })
     });
 
     return deferred.promise;

@@ -25,9 +25,13 @@ function update(req, res) {
 
 function create(req, res) {
     const name = req.body.name;
+    const resume = req.body.resume;
     const author = req.body.author;
+    const artist = req.body.artist;
+    const genre = req.body.genre;
+    const type = req.body.type;
 
-    MangaDa.create(name, author)
+    MangaDa.create(name, author, artist, genre, type, resume)
         .then((manga) => { res.status(200).json(manga); })
         .catch(() => { res.sendStatus(422); });
 }
