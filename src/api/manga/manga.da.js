@@ -44,7 +44,7 @@ function update(id, name, completed) {
 function create(name, author) {
     const deferred = Q.defer();
 
-    const author = Person.findOrCreate({ name: author }, (err, result) => {
+    Person.findOrCreate({ name: author }, (err, result) => {
         deferred.resolve(result);
     });
 
