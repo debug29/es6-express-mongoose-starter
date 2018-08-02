@@ -11,7 +11,7 @@ router.route('/manga')
     // POST /api/v1/manga - Create new manga
     .post(ctrl.create);
 
-router.route('/todo/:id')
+router.route('/manga/:id')
 
     // DELETE /api/v1/manga/:id - Delete manga
     .delete(ctrl.remove)

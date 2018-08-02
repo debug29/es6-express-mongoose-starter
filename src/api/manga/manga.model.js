@@ -33,6 +33,10 @@ const MangaSchema = new mongoose.Schema({
         default: 0.0,
         required: false
     },
+    resume: {
+        type: String,
+        required: true
+    },
     created: {
         type: Date,
         default: Date.now
