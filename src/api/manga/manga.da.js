@@ -48,7 +48,7 @@ function create(name, author, artist, genre, type, resume) {
     Person.findOrCreate({ name: author }, (_errAu, dbAuthor) => {
         Person.findOrCreate({ name: artist }, (_errAr, dbArtist) => {
             Genre.findOrCreate({ name: genre }, (_errGe, dbGenre) => {
-                console.log('${name} /  ${dbAuthor}  /  ${dbArtist}  /  ${dbGenre}  /  ${type}  /  ${resume}');
+                console.log(`${name} /  ${dbAuthor}  /  ${dbArtist}  /  ${dbGenre}  /  ${type}  /  ${resume}`);
                 deferred.resolve('OK');
             });
         });
