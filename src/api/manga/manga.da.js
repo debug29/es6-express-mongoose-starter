@@ -48,8 +48,7 @@ function create(name, reqAuthor, reqArtist, reqGenre, type, resume) {
     Person.findOrCreate({ name: reqAuthor }, (_errAu, author) => {
         Person.findOrCreate({ name: reqArtist }, (_errAr, artist) => {
             Genre.findOrCreate({ name: reqGenre }, (_errGe, genre) => {
-                console.log(`${name} /  ${author}  /  ${artist}  /  ${genre}  /  ${type}  /  ${resume}`);
-                const manga = new Manga(name, author, artist, genre, type, resume);
+                const manga = new Manga({ name, author, artist, genre, type, resume });
                 manga.save((err, savedManga) => {
                     if (err) deferred.reject(err);
                     deferred.resolve(savedManga);
