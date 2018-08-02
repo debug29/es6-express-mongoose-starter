@@ -7,7 +7,8 @@ export default {
     getAll,
     update,
     create,
-    remove
+    remove,
+    get
 };
 
 function getAll() {
@@ -67,6 +68,16 @@ function remove(id) {
 
         deferred.resolve(manga);
     });
+
+    return deferred.promise;
+}
+
+function get(id) {
+    const deferred = Q.defer();
+    Manga.find({ _id: id }, (err, manga) => {
+        if (err) deferred.reject(err);
+        deferred.resolve(manga);
+    }).populate('genre').populate('author').populate('artist');
 
     return deferred.promise;
 }

@@ -4,12 +4,21 @@ export default {
     getAll,
     update,
     create,
-    remove
+    remove,
+    get
 };
 
 function getAll(req, res) {
-    MangaDa.getAll()
+    MangaDa.get()
         .then((mangas) => { res.status(200).json(mangas); })
+        .catch(() => { res.sendStatus(422); });
+}
+
+function get(req, res) {
+    const id = req.params.id;
+
+    MangaDa.getAll(id)
+        .then((manga) => { res.status(200).json(manga); })
         .catch(() => { res.sendStatus(422); });
 }
 
