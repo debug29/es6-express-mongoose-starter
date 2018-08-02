@@ -74,7 +74,7 @@ function remove(id) {
 
 function get(id) {
     const deferred = Q.defer();
-    Manga.find({ _id: id }, (err, manga) => {
+    Manga.findById(id, (err, manga) => {
         if (err) deferred.reject(err);
         deferred.resolve(manga);
     }).populate('genre').populate('author').populate('artist');
